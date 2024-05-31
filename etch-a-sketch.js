@@ -1,15 +1,28 @@
 const etchContainer = document.getElementById("etchContainer");
+const etchASketchDimensions = 16;
+createEtchASketch(etchASketchDimensions);
 
-for (let i = 0; i < 16; i++) {
-    let newDiv = document.createElement("div");
-    newDiv.class = "column";
-    etchContainer.appendChild(newDiv);
-
-    for (let n = 0; n < 16; n++) {
+// FUNCTIONS
+function createEtchASketch (dimensions) {
+    for (let i = 0; i < dimensions; i++) {
         let newDiv = document.createElement("div");
-        newDiv.class = "row";
-        newDiv.textContent = n;
-        etchContainer.lastChild.appendChild(newDiv);
+        newDiv.classList.add("column");
+        etchContainer.appendChild(newDiv);
+        
+        for (let n = 0; n < dimensions; n++) {
+            let newDiv = document.createElement("div");
+            newDiv.classList.add("cell");
+            newDiv.addEventListener("mouseover", () => {
+                newDiv.style.backgroundColor = "red";
+            })
+            etchContainer.lastChild.appendChild(newDiv);
+        }
     }
 }
 
+function newEtchASketch(dimensions) {
+    while (etchContainer.firstChild) {
+        etchContainer.remove(etchContainer.firstChild);
+    }
+    createEtchASketch(dimensions);
+}

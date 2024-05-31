@@ -4,7 +4,8 @@
     margin-top: 50px;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
+.cell {
+    background-color: aquamarine;
+    width: 5px;
+    height: 5px;
 }
